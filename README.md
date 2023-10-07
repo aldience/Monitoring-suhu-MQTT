@@ -112,6 +112,3 @@ Untuk menggunakan kode ini, ikuti langkah-langkah berikut:
 ## Kesimpulan
 
 Implementasi ini untuk menangani data sensor melalui komunikasi MQTT dan interaksi dengan database MySQL. Ini dapat diperluas atau dimodifikasi berdasarkan persyaratan tertentu. Pastikan untuk mengkonfigurasi parameter broker MQTT dan koneksi database sesuai kebutuhan.
-
-```
-
