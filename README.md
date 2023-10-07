@@ -115,4 +115,3 @@ Implementasi ini menyediakan dasar untuk menangani data sensor melalui komunikas
 
 ```
 
-Silakan sesuaikan dokumentasi ini sesuai kebutuhan Anda, tambahkan detail tentang format data sensor yang diharapkan, skema database, dan informasi relevan lainnya.
