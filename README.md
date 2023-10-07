@@ -107,11 +107,11 @@ Untuk menggunakan kode ini, ikuti langkah-langkah berikut:
 
 1. Pastikan Node.js terinstal di sistem Anda.
 2. Instal dependensi yang diperlukan dengan menjalankan `npm install`.
-3. Jalankan aplikasi dengan perintah `node mqttHandler.js`.
+3. Jalankan aplikasi dengan perintah `npm run start`.
 
 ## Kesimpulan
 
-Implementasi ini menyediakan dasar untuk menangani data sensor melalui komunikasi MQTT dan interaksi dengan database MySQL. Ini dapat diperluas atau dimodifikasi berdasarkan persyaratan tertentu. Pastikan untuk mengkonfigurasi parameter broker MQTT dan koneksi database sesuai kebutuhan.
+Implementasi ini untuk menangani data sensor melalui komunikasi MQTT dan interaksi dengan database MySQL. Ini dapat diperluas atau dimodifikasi berdasarkan persyaratan tertentu. Pastikan untuk mengkonfigurasi parameter broker MQTT dan koneksi database sesuai kebutuhan.
 
 ```
 
