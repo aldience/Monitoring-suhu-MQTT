@@ -1,114 +1,23 @@
-# API-MYSQL---MQTT---DHT22
+Tulisan tersebut memberikan gambaran umum tentang sebuah implementasi kode JavaScript yang bertujuan untuk menangani data sensor melalui protokol MQTT dan berinteraksi dengan database MySQL. Berikut adalah penjelasan singkat tentang isi tulisan tersebut:
 
-## Gambaran Umum
+1. **Gambaran Umum**:
+    - Kode JavaScript ini bertujuan untuk mengintegrasikan data sensor menggunakan protokol MQTT.
+    - Kode ini mengatur koneksi ke broker MQTT (`test.mosquitto.org`) dan berlangganan ke topik `"malih1/Data"`.
+    - Saat menerima pesan, kode mencoba mengurai pesan sebagai JSON dan menyisipkan data sensor ke dalam database MySQL menggunakan modul `sensorModel`.
 
-Kode JavaScript yang disediakan menangani integrasi data sensor menggunakan protokol MQTT (Message Queuing Telemetry Transport). Ini berlangganan ke topik tertentu di broker MQTT, menerima pesan masuk, menguraikannya, dan menyisipkan data sensor ke dalam database MySQL. Selain itu, kode ini menyertakan fungsi untuk mengambil semua data sensor dari database dan menyisipkan data sensor baru.
+2. **Interaksi Database (`sensorModel.js`)**:
+    - Modul `sensorModel.js` bertanggung jawab untuk interaksi dengan database MySQL.
+    - Terdapat fungsi `insertSensorData` untuk menyisipkan data sensor ke dalam database.
+    - Terdapat juga fungsi `getAllSensorData` untuk mengambil semua data sensor dari database.
 
-#### 1.1 Ketergantungan
+3. **Berlangganan Topik MQTT**:
+    - Pada kasus ini, Dht-22 digunakan sebagai sumber data dengan topik `"malih/data"`.
 
-- `mqtt`: Klien MQTT untuk Node.js.
+4. **Penggunaan**:
+    - Langkah-langkah untuk menggunakan kode ini disertakan, termasuk instalasi dependensi dan menjalankan aplikasi.
 
-#### 1.2 Inisialisasi
+5. **Kesimpulan**:
+    - Implementasi ini bertujuan untuk menangani data sensor melalui MQTT dan berinteraksi dengan database MySQL.
+    - Ditekankan bahwa kode ini dapat diperluas atau dimodifikasi sesuai kebutuhan, dan konfigurasi parameter MQTT broker dan koneksi database harus disesuaikan sesuai kebutuhan.
 
-- Kode ini membuat koneksi ke broker MQTT (`test.mosquitto.org`) dan berlangganan ke topik `"malih1/Data"`.
-
-```javascript
-const mqtt = require("mqtt");
-const sensorModel = require("../models/sensorModel");
-const mqttClient = mqtt.connect("mqtt://test.mosquitto.org");
-
-mqttClient.on("connect", () => {
-  mqttClient.subscribe("malih1/Data");
-});
-```
-
-#### 1.3 Penanganan Pesan
-
-- Saat menerima pesan, kode ini mencoba mengurai sebagai JSON dan kemudian menyisipkan data sensor ke dalam database MySQL menggunakan modul `sensorModel`.
-
-```javascript
-mqttClient.on("message", (_topic, message) => {
-  try {
-    const data = JSON.parse(message.toString());
-    sensorModel.insertSensorData(data, (err, _result) => {
-      if (err) {
-        console.error("Error inserting data into MySQL: " + err.message);
-      } else {
-        console.log("Data inserted into MySQL");
-      }
-    });
-  } catch (err) {
-    console.error("Error parsing MQTT message: " + err.message);
-  }
-});
-```
-
-#### 1.4 Titik Akhir API
-
-- Dua titik akhir API didefinisikan untuk penanganan data sensor:
-
-  - `getAllSensorData`: Mengambil semua data sensor dari database dan memberikan respons dengan objek JSON.
-  - `insertSensorData`: Menyisipkan data sensor baru ke dalam database dan memberikan respons dengan objek JSON.
-
-```javascript
-const getAllSensorData = async (req, res) => {
-  // Detail implementasi...
-};
-
-const insertSensorData = async (_req, res) => {
-  // Detail implementasi...
-};
-
-module.exports = {
-  insertSensorData,
-  getAllSensorData,
-};
-```
-
-### 2. Interaksi Database (`sensorModel.js`)
-
-#### 2.1 Ketergantungan
-
-- `dbPool`: Pool koneksi database yang dikonfigurasi dalam modul `../config/database`.
-
-#### 2.2 Fungsi-fungsi
-
-- `insertSensorData`: Menyisipkan data sensor ke dalam database MySQL.
-
-```javascript
-const insertSensorData = (data, callback) => {
-  // Detail implementasi...
-};
-```
-
-- `getAllSensorData`: Mengambil semua data sensor dari database.
-
-```javascript
-const getAllSensorData = () => {
-  // Detail implementasi...
-};
-```
-
-#### 2.3 Berlanggan topik MQTT 
-
-- Pada kasus ini menggunakan Dht-22 sebagai sumber data 
-- Dengan topik **malih/data**
-
-```javascript
-{
-  "temperature": 25.5,
-  "humidity": 60.2
-}
-```
-
-## Penggunaan
-
-Untuk menggunakan kode ini, ikuti langkah-langkah berikut:
-
-1. Pastikan Node.js terinstal di sistem Anda.
-2. Instal dependensi yang diperlukan dengan menjalankan `npm install`.
-3. Jalankan aplikasi dengan perintah `npm run start`.
-
-## Kesimpulan
-
-Implementasi ini untuk menangani data sensor melalui komunikasi MQTT dan interaksi dengan database MySQL. Ini dapat diperluas atau dimodifikasi berdasarkan persyaratan tertentu. Pastikan untuk mengkonfigurasi parameter broker MQTT dan koneksi database sesuai kebutuhan.
+Apakah ada yang ingin Anda tanyakan atau diskusikan lebih lanjut mengenai tulisan ini?
