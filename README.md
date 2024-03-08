@@ -20,4 +20,3 @@ Tulisan tersebut memberikan gambaran umum tentang sebuah implementasi kode JavaS
     - Implementasi ini bertujuan untuk menangani data sensor melalui MQTT dan berinteraksi dengan database MySQL.
     - Ditekankan bahwa kode ini dapat diperluas atau dimodifikasi sesuai kebutuhan, dan konfigurasi parameter MQTT broker dan koneksi database harus disesuaikan sesuai kebutuhan.
 
-Apakah ada yang ingin Anda tanyakan atau diskusikan lebih lanjut mengenai tulisan ini?
