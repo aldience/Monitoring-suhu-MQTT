@@ -1,22 +1,25 @@
-Tulisan tersebut memberikan gambaran umum tentang sebuah implementasi kode JavaScript yang bertujuan untuk menangani data sensor melalui protokol MQTT dan berinteraksi dengan database MySQL. Berikut adalah penjelasan singkat tentang isi tulisan tersebut:
+### **Rangkuman Proyek Integrasi Sensor dengan MQTT dan MySQL**
 
 1. **Gambaran Umum**:
-    - Kode JavaScript ini bertujuan untuk mengintegrasikan data sensor menggunakan protokol MQTT.
-    - Kode ini mengatur koneksi ke broker MQTT (`test.mosquitto.org`) dan berlangganan ke topik `"malih1/Data"`.
-    - Saat menerima pesan, kode mencoba mengurai pesan sebagai JSON dan menyisipkan data sensor ke dalam database MySQL menggunakan modul `sensorModel`.
+    - Proyek ini mengintegrasikan data sensor dengan menggunakan protokol **MQTT**.
+    - Koneksi dilakukan ke broker MQTT publik (`test.mosquitto.org`) dan berlangganan pada topik **"malih1/Data"**.
+    - Setelah menerima pesan, kode mencoba mengurai data JSON dan menyimpannya ke dalam database **MySQL** menggunakan modul khusus bernama `sensorModel`.
 
 2. **Interaksi Database (`sensorModel.js`)**:
-    - Modul `sensorModel.js` bertanggung jawab untuk interaksi dengan database MySQL.
-    - Terdapat fungsi `insertSensorData` untuk menyisipkan data sensor ke dalam database.
-    - Terdapat juga fungsi `getAllSensorData` untuk mengambil semua data sensor dari database.
+    - Modul **`sensorModel.js`** berfungsi sebagai jembatan antara data sensor dan **MySQL**.
+    - Fungsi **`insertSensorData`** menyimpan data sensor ke database.
+    - Fungsi **`getAllSensorData`** mengembalikan seluruh data sensor yang tersimpan di database.
 
 3. **Berlangganan Topik MQTT**:
-    - Pada kasus ini, Dht-22 digunakan sebagai sumber data dengan topik `"malih/data"`.
+    - Kode berlangganan pada topik **"malih/data"** yang menerima data dari sensor **DHT-22**.
 
-4. **Penggunaan**:
-    - Langkah-langkah untuk menggunakan kode ini disertakan, termasuk instalasi dependensi dan menjalankan aplikasi.
+4. **Cara Penggunaan**:
+    - Langkah-langkah untuk menjalankan kode:
+        - Install dependensi yang diperlukan.
+        - Jalankan aplikasi untuk mulai mendengarkan topik MQTT dan menyimpan data ke database.
 
 5. **Kesimpulan**:
-    - Implementasi ini bertujuan untuk menangani data sensor melalui MQTT dan berinteraksi dengan database MySQL.
-    - Ditekankan bahwa kode ini dapat diperluas atau dimodifikasi sesuai kebutuhan, dan konfigurasi parameter MQTT broker dan koneksi database harus disesuaikan sesuai kebutuhan.
+    - Kode ini mengatur alur data sensor dari MQTT ke database MySQL.
+    - Proyek ini fleksibel dan dapat diperluas atau disesuaikan dengan perubahan pada konfigurasi broker MQTT maupun koneksi database.
 
+Dengan pendekatan ini, data sensor dapat dikelola secara efektif menggunakan protokol MQTT dan diintegrasikan dengan database untuk penyimpanan dan analisis lebih lanjut.
