@@ -1,4 +1,4 @@
-### **Rangkuman Proyek Integrasi Sensor dengan MQTT dan MySQL**
+### **Rangkuman Proyek Integrasi Sensor dengan MQTT, MySQL, dan Express**
 
 1. **Gambaran Umum**:
     - Proyek ini mengintegrasikan data sensor dengan menggunakan protokol **MQTT**.
@@ -13,13 +13,32 @@
 3. **Berlangganan Topik MQTT**:
     - Kode berlangganan pada topik **"malih/data"** yang menerima data dari sensor **DHT-22**.
 
-4. **Cara Penggunaan**:
-    - Langkah-langkah untuk menjalankan kode:
-        - Install dependensi yang diperlukan.
-        - Jalankan aplikasi untuk mulai mendengarkan topik MQTT dan menyimpan data ke database.
+4. **Integrasi dengan Express**:
+    - Kode menggunakan **Express.js** untuk membuat **API REST** agar data sensor bisa diakses melalui HTTP.
+    - Express menyediakan endpoint untuk mengambil data sensor dari database.
+        - **GET `/sensor-data`**: Mengambil seluruh data sensor yang tersimpan.
+    - Data yang diambil dari database melalui **sensorModel.js** dan ditampilkan dalam format **JSON**.
 
-5. **Kesimpulan**:
-    - Kode ini mengatur alur data sensor dari MQTT ke database MySQL.
-    - Proyek ini fleksibel dan dapat diperluas atau disesuaikan dengan perubahan pada konfigurasi broker MQTT maupun koneksi database.
+5. **Cara Penggunaan**:
 
-Dengan pendekatan ini, data sensor dapat dikelola secara efektif menggunakan protokol MQTT dan diintegrasikan dengan database untuk penyimpanan dan analisis lebih lanjut.
+    - **Langkah-langkah Setup**:
+        1. **Install dependensi**:
+            ```bash
+            npm install express mqtt mysql2
+            ```
+
+        2. **Jalankan aplikasi**:
+            ```bash
+            node app.js
+            ```
+
+    - **API Route yang tersedia**:
+        - **GET `/sensor-data`**: Mengembalikan data sensor dalam format JSON dari database MySQL.
+
+
+7. **Kesimpulan**:
+    - **Express** ditambahkan untuk membuat API yang dapat mengakses data sensor secara HTTP.
+    - Kombinasi **MQTT** dan **Express** memungkinkan integrasi yang lebih luas, seperti menampilkan data sensor secara real-time melalui API atau interface web.
+    - Dengan kode ini, Anda dapat mengatur aliran data dari MQTT ke database MySQL, sekaligus menyediakan endpoint untuk mengakses data sensor menggunakan HTTP.
+
+Dengan demikian, proyek ini mencakup tiga komponen utama: **sensor** melalui MQTT, **database** MySQL untuk penyimpanan data, dan **Express.js** untuk akses HTTP ke data sensor.
